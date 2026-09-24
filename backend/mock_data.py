@@ -25,8 +25,9 @@ def generate_mock_data(num_records=50):
     return data
 
 if __name__ == "__main__":
-    # Generate and save to a JSON file to serve as our fake database
+    import os
+    db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "database.json")
     mock_db = generate_mock_data(100)
-    with open("database.json", "w") as f:
+    with open(db_path, "w", encoding="utf-8") as f:
         json.dump(mock_db, f, indent=4)
-    print("✅ Generated 100 mock urban incidents!")
+    print("Generated 100 mock urban incidents successfully!")

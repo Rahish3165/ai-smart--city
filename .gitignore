@@ -8,6 +8,7 @@ __pycache__/
 *.pyc
 database.json
 venv/
+.venv/
 .snapshots/
 frontend_pid.txt
 package-lock.json

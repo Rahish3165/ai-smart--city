@@ -1,4 +1,5 @@
-﻿import json
+import os
+import json
 import random
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
@@ -13,10 +14,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "database.json")
+
 @app.get("/api/heatmap-data")
 def get_heatmap_data():
     try:
-        with open("database.json", "r") as f:
+        with open(DB_PATH, "r", encoding="utf-8") as f:
             data = json.load(f)
         return {
             "incidents": data,
